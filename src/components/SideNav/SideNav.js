@@ -8,9 +8,9 @@ const SideNav = () => {
   return(
     <div className="SideNav">
       <h1>CleanSpace</h1>
-      <a href="/"> <AiOutlineHome /> Home</a>
-      <a href="#"> <RiDashboardLine /> Dashboard</a>
-      <a href="/report"> <HiOutlineDocumentReport /> Report</a>
+      <a href="/"><div className="flex"><AiOutlineHome className="navIcon"/> Home</div></a>
+      <a href="#"><div className="flex"><RiDashboardLine className="navIcon"/> Dashboard</div></a>
+      <a href="/report"><div className="flex"><HiOutlineDocumentReport className="navIcon"/> Report</div></a>
     </div>
   );
 }
