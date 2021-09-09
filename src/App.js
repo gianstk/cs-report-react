@@ -6,7 +6,7 @@ import './Utilities.css';
 
 import { reducer, initState } from './reducers/userReducer';
 import Routing from './components/Routing/Routing';
-
+import SideNav from './components/SideNav/SideNav';
 
 
 export const UserContext = createContext();
@@ -30,6 +30,7 @@ function App() {
     <div className="App">
       <UserContext.Provider value={{stateUser: stateUser, dispatchUser: dispatchUser}}>
         <Router>
+
           <Routing/>
         </Router>        
       </UserContext.Provider>
