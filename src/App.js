@@ -1,4 +1,4 @@
-import { useReducer, createContext } from 'react';
+import { useReducer, createContext, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import './App.css';
@@ -13,6 +13,8 @@ export const UserContext = createContext();
 
 function App() {
   const [stateUser, dispatchUser] = useReducer(reducer, initState);
+  const [isSidebar, setSidebar] = useState(false);
+
 
 
   if (!stateUser) {
@@ -29,10 +31,14 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{stateUser: stateUser, dispatchUser: dispatchUser}}>
-        <Router>
+        <SideNav />
+        <div className="main">
+          <Router>
+            <Routing/>
+          </Router>  
+        </div>
 
-          <Routing/>
-        </Router>        
+                
       </UserContext.Provider>
     </div>
   )

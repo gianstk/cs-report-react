@@ -4,6 +4,16 @@
   margin: 0;
 }
 
+.main {
+  margin-left: 220px;
+}
+
 @media print {
-body {-webkit-print-color-adjust: exact;}
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+
+  .main {
+    margin-left: 0px;
+  }
 }

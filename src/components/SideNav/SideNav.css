@@ -1,0 +1,35 @@
+@import url(//db.onlinewebfonts.com/c/a97dc52b4b2059e5f04907cb7492af0b?family=Handel+Gothic);
+
+.SideNav h1 {
+  color: white;
+  margin-bottom: 10px;
+  font-family: "Handel Gothic";
+  padding-left: 15px;
+  padding-top: 20px;
+}
+
+.SideNav {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #0a9995;
+  overflow-x: hidden;
+  overflow-y: fixed;
+}
+
+.SideNav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #fff;
+  display: block;
+}
+
+@media print {
+  .SideNav {
+    width: 0;
+  }
+}

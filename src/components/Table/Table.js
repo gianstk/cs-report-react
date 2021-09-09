@@ -1,10 +1,7 @@
-import Reafct from 'react';
-
 import './Table.css';
 
-
 const Table = (props) => {
-  
+
   const data = props.data;
   const columns = Object.keys(props.data[0]);
 
