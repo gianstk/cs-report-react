@@ -1,0 +1,42 @@
+.Signin.card {
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  
+  
+  width: 400px;
+  height: 250px;
+  margin: 150px auto;
+}
+
+.Signin input {
+  height: 2rem;
+  width: 70%;
+  text-align: center;
+  border: 1.5px solid #ccc;
+  border-radius: 7px;
+}
+
+.Signin h2 {
+  color: #0a9995;
+}
+
+.Signin button {
+  height: 2.5rem;
+  width: 70%;
+  text-align: center;
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  border-radius: 7px;
+}
+
+.Signin button:hover {
+  transition-duration: 200ms;
+  background-color: #1CB7B3;
+}
+
+.Signin button:active {
+  background-color: #0a9995;
+}

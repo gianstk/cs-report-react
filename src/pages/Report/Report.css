@@ -1,0 +1,19 @@
+.Report {
+  margin: 5% 5%;
+}
+
+.reportTitle {
+  font-size: 2.5rem;
+  color: #0a9995 !important;
+}
+
+@media print {
+  .pagebreak {
+      clear: both;
+      page-break-after: always;
+  }
+
+  .Report {
+    margin: 5% 2%;
+  }
+}

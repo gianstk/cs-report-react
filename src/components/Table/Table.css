@@ -1,0 +1,38 @@
+.tableForm {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.tableForm h2 {
+  color: #0a9995;
+  margin-bottom: 0.5rem;
+}
+
+table.Table {
+  padding: 0;
+  border-collapse: collapse;
+  overflow: hidden;  
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+}
+
+.Table thead {
+  border-radius: 10px 10px 0 0 ;
+}
+
+.Table th {
+  background-color: #0a9995;
+  padding: 1rem 1rem;
+  color: #fff;
+}
+
+.Table td {
+  padding: 1rem 0.5rem;
+  
+}
+
+.Table tr:nth-child(even) {
+  background-color: #eeeeee;
+}

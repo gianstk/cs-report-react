@@ -1,0 +1,17 @@
+.PieForm {
+  margin-top: 1.5rem;
+}
+
+.PieForm .flex {
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.PieForm .flex .card {
+  width: 30%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
