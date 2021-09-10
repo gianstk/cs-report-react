@@ -11,6 +11,7 @@ const SideNav = () => {
       <a href="/"><div className="flex"><AiOutlineHome className="navIcon"/> Home</div></a>
       <a href="#"><div className="flex"><RiDashboardLine className="navIcon"/> Dashboard</div></a>
       <a href="/report"><div className="flex"><HiOutlineDocumentReport className="navIcon"/> Report</div></a>
+      <a href="#"></a>
     </div>
   );
 }

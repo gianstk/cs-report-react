@@ -1,0 +1,71 @@
+.reportParentContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ReportSearch.card {
+  display: inline-block;
+  margin-bottom: 2rem;
+  margin-left: 0;
+  width: 55%;
+}
+
+.itemGroup{
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.report-child {
+  height: 3rem;
+  font-size: 1.2rem;
+  width: 50%;
+  margin: 1.5rem 0rem 1rem 0rem;
+}
+
+.childGroup {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.childGroup p {
+  font-size: 1.5rem;
+}
+
+.orgIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.orgGroup select {
+  font-size: 1.5rem;
+}
+
+.report-search-button {
+  height: 3rem;
+  /* width: 150px; */
+  width: 100%;
+  text-align: center;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 7px;
+}
+
+.report-search-button:hover {
+  transition-duration: 200ms;
+  background-color: #1CB7B3;
+}
+
+.report-search-button:active {
+  background-color: #0a9995;
+}
+
+
+@media print {
+  .ReportSearch.card {
+    display: none;
+  } 
+}

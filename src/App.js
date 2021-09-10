@@ -1,4 +1,4 @@
-import { useReducer, createContext, useState } from 'react';
+import { useReducer, createContext } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import './App.css';
@@ -13,9 +13,6 @@ export const UserContext = createContext();
 
 function App() {
   const [stateUser, dispatchUser] = useReducer(reducer, initState);
-  const [isSidebar, setSidebar] = useState(false);
-
-
 
   if (!stateUser) {
     return (

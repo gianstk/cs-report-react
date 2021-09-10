@@ -11,7 +11,7 @@ import Report from './../../pages/Report/Report';
 const Routing = () => {
   const history = useHistory();
   const userContext = useContext(UserContext);
-  const {stateUser, dispatchUser} = userContext;
+  const dispatchUser = userContext.dispatchUser;
 
   useEffect(() => {
     const userKey = localStorage.getItem("userKey");
@@ -21,7 +21,6 @@ const Routing = () => {
     }
     history.push('/signin');
   }, []);
-
 
   return (
     <div> 
@@ -35,7 +34,6 @@ const Routing = () => {
         <Route path="/report">
           <Report/>
         </Route>
-
 
         {/* Heom page */}
         <Route path="/">
