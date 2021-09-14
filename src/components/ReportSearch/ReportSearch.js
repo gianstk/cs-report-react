@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaRegHospital } from 'react-icons/fa';
 
 import './ReportSearch.css';
 
-const ReportSearch = () => {
+const ReportSearch = (props) => {
+
   const [org, setOrg] = useState("");
   const [month, setMonth] = useState("");
 
@@ -12,8 +13,9 @@ const ReportSearch = () => {
       alert("Please choose organisation and date");
       return;
     }
-
+    props.getReport(org);
   }
+
   return(
     <div className="reportParentContainer">
       <div className="ReportSearch card">
@@ -23,12 +25,13 @@ const ReportSearch = () => {
             <p>Organisation</p>
             <select className="report-child" name="orgs" id="org-select" onChange={(e) => {setOrg(e.target.value)}}>
               <option value="">Choose an organisation</option>
+              <option value="5">Alpha Team</option>
               <option value="SKH">SKH</option>
               <option value="SSTH">SSTH</option>
             </select>
           </div>
           
-          <div class="flex childGroup">
+          <div className="flex childGroup">
             <p>Date</p>
             <input className="report-child" type="month" name="" id="" onChange={(e) => {setMonth(e.target.value)}} />
           </div>

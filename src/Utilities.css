@@ -1,8 +1,14 @@
+html {
+  -webkit-print-color-adjust: exact;
+  -webkit-filter: opacity(1);
+}
+
 .card {
   background-color: #fff;
   color: #333;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
   padding: 20px;
   margin: 10px;
 }

@@ -30,7 +30,7 @@ const reportData = {
     "pieValue": 0.75,
     "card1": {
       "h1": [10],
-      "h3": ["Numbero f Daily Check"],
+      "h3": ["Number  of Daily Check"],
       "p": ["In the last 30 days"],
     },
     "card2": {
@@ -69,16 +69,28 @@ const reportData = {
 
   "title2": "Fit Check Detail",
   "data2": [
-    {"Device": "CleanSpace Halo", "Login": "---", "Wearer ID": "T0001", "Date": "2021 Sep 27", "Fit Check Result": "Bad"},
-    {"Device": "CleanSpace Halo", "Login": "---", "Wearer ID": "T0001", "Date": "2021 Sep 27", "Fit Check Result": "Adjust"},
-    {"Device": "CleanSpace Halo", "Login": "---", "Wearer ID": "T0001", "Date": "2021 Sep 27", "Fit Check Result": "Good"},
+    {"dev_name": "CleanSpace Halo", "email": "---", "wearer_id": "T0001", "timestamp": "2021 Sep 27", "fit_check_result": "Bad"},
+    {"dev_name": "CleanSpace Halo", "email": "---", "wearer_id": "T0009", "timestamp": "2021 Sep 27", "fit_check_result": "Adjust"},
+    {"dev_name": "CleanSpace Halo", "email": "---", "wearer_id": "T0010", "timestamp": "2021 Sep 27", "fit_check_result": "Good"},
+    {"dev_name": "CleanSpace Halo", "email": "---", "wearer_id": "T0002", "timestamp": "2021 Sep 27", "fit_check_result": "Adjust"},
+    {"dev_name": "CleanSpace Halo", "email": "---", "wearer_id": "T0003", "timestamp": "2021 Sep 27", "fit_check_result": "Good"},
+    {"dev_name": "CleanSpace Halo", "email": "---", "wearer_id": "T0001", "timestamp": "2021 Sep 27", "fit_check_result": "Bad"},
   ],
 
   "title3": "Daily Check Result",
   "data3": [
-    {"Device": "---", "Login": "test@test.com", "Wearer ID": "G0001", "Date": "2021 Aug 03", "Equipment Check": "Pass", "Battery": "Fail"},
-    {"Device": "---", "Login": "test@test.com", "Wearer ID": "G0001", "Date": "2021 Aug 03", "Equipment Check": "Pass", "Battery": "Fail"},
-    {"Device": "---", "Login": "test@test.com", "Wearer ID": "G0001", "Date": "2021 Aug 03", "Equipment Check": "Pass", "Battery": "Fail"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Fail"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Fail"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Fail", "battery_result": "Fail"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Pass"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Pass"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Fail", "battery_result": "Pass"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Pass"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Fail"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Fail", "battery_result": "Fail"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Pass"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Pass"},
+    {"dev_name": "---", "email": "test@test.com", "wearer_id": "G0001", "timestamp": "2021 Aug 03", "equipment_result": "Pass", "battery_result": "Pass"},
   ],
 }
 
