@@ -23,12 +23,13 @@ const Report = () => {
     
   useEffect(() => {
     if (reportData.details) {
+      console.log(reportData.details);
       setDevices(reportData.details.dev_entries);
       setRecentChecks(reportData.details.dev_entries);
       setSummary1(DataExtractor.getDeviceSummary(reportData.details));
       setSummary2(DataExtractor.getFitCheckSummary(reportData.details, staticReportData.data2));
       setSummary3(DataExtractor.getDailyCheckSummary(reportData.details, staticReportData.data3));
-
+      console.log("summary1:", summary1);
     }
 
   }, [reportData])
@@ -37,7 +38,7 @@ const Report = () => {
   // GET request to fetch report
   const getReport = (orgId) => {
     const userKey = localStorage.getItem("userKey");
-    const REPORT_ENDPOINT = "https://dev1.cleanspace.technology/api/v2/analytics/organisation_monthly_report?id=" + String(orgId);
+    const REPORT_ENDPOINT = "https://beta.cleanspace.technology/api/v2/analytics/organisation_monthly_report?id=" + String(orgId);
     fetch(REPORT_ENDPOINT, {
       headers: {
         'Authorization': 'Basic ' + userKey,
@@ -74,27 +75,12 @@ const Report = () => {
         
         <div className="pagebreak"> </div>
         {<Table key={"table1"} data={devices} tableMetadata={tableMetadata.deviceTable}/>}
-        {/* {
-          devices
-          ? <Table key={"table1"} data={devices} tableMetadata={tableMetadata.deviceTable}/>
-          : <div></div>
-        } */}
 
         <div className="pagebreak"> </div>
         {<Table key={"table2"} data={staticReportData.data2} tableMetadata={tableMetadata.fitCheckTable}/>}
-        {/* {
-          devices
-          ? <Table key={"table1"} data={staticReportData.data2} tableMetadata={tableMetadata.fitCheckTable}/>
-          : <div></div>
-        } */}
         
         <div className="pagebreak"> </div>
         {<Table key={"table3"} data={staticReportData.data3} tableMetadata={tableMetadata.dailyCheckTable}/>}
-        {/* {
-          devices
-          ? <Table key={"table1"} data={staticReportData.data3} tableMetadata={tableMetadata.dailyCheckTable}/>
-          : <div></div>
-        } */}
         
       </div>
         : <div></div>

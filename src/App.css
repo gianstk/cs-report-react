@@ -4,6 +4,11 @@
   margin: 0;
 }
 
+html {
+  -webkit-print-color-adjust: exact;
+  -webkit-filter: opacity(1);
+}
+
 .main {
   margin-left: 220px;
 }

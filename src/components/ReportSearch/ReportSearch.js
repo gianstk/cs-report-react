@@ -26,8 +26,9 @@ const ReportSearch = (props) => {
             <select className="report-child" name="orgs" id="org-select" onChange={(e) => {setOrg(e.target.value)}}>
               <option value="">Choose an organisation</option>
               <option value="5">Alpha Team</option>
-              <option value="SKH">SKH</option>
-              <option value="SSTH">SSTH</option>
+              <option value="11">SG SengKang Hospital SKH</option>
+              <option value="1">SKH</option>
+              <option value="2">SSTH</option>
             </select>
           </div>
           
