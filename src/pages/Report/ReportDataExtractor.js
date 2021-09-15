@@ -24,7 +24,7 @@ function calculateFitResultSummary(fitChecks) {
   var fitCheckResults = {}
   var fitCheckTotal = 0
   for (var i = 0; i < fitChecks.length; i++) {
-    let result = fitChecks[i].fit_check_result;
+    let result = calculateFitResult(fitChecks[i].fit_check_result);
     fitCheckTotal += 1;
     if (!fitCheckResults[result]) {
       fitCheckResults[result] = 1
@@ -35,9 +35,30 @@ function calculateFitResultSummary(fitChecks) {
   }
   var result = [];
   for (const key in fitCheckResults) {
-    result.push(`${key} : ${(fitCheckResults[key]/fitCheckTotal).toFixed(2)}%`);
+    result.push(`${key} : ${(fitCheckResults[key] / fitCheckTotal * 100).toFixed(2)}%`);
   }
+  console.log(fitCheckResults);
   return result;
+}
+
+
+function calculateFitResult(fitScore) {
+  /*
+  (infinite, 2000)  -> Good Fit
+  [2000, 500)       -> Adjust and Repeat
+  [500, 0)          -> Poor Fit
+  [0, infinite)     -> Try Again
+  */
+  if (fitScore > 2000) {
+    return "Good Fit";
+  }
+  if (fitScore > 500) {
+    return "Adjust and Repeat";
+  }
+  if (fitScore > 0) {
+    return "Poor Fit";
+  }
+  return "Try Again";
 }
 
 
@@ -51,10 +72,10 @@ function calculateDailyCheckSummary(dailyChecks) {
 
   var dailyCheckTotal = 0;
   for (var i = 0; i < dailyChecks.length; i++) {
-    if (dailyChecks[i].equipment_result == "Fail") {
+    if (dailyChecks[i].equipment_result == false) {
       failedDailyChecks.equipment += 1;  
     }
-    if (dailyChecks[i].battery_result == "Fail") {
+    if (dailyChecks[i].battery_result == false) {
       failedDailyChecks.battery += 1;  
     }
     
@@ -95,11 +116,11 @@ function getDeviceSummary(details) {
 }
 
 
-function getFitCheckSummary(details, fitchecks) {
+function getFitCheckSummary(details) {
   const fitCheckCount = details.recent_checks.total_recent_fit_checks;
   const totalConnectedDevice = details.recent_checks.connected_devs;
   const pieValue = fitCheckCount/totalConnectedDevice;
-  const fitCheckResults = calculateFitResultSummary(fitchecks);
+  const fitCheckResults = calculateFitResultSummary(details.fit_check_entries);
   
   
   return {
@@ -117,11 +138,12 @@ function getFitCheckSummary(details, fitchecks) {
 }
 
 
-function getDailyCheckSummary(details, dailyChecks) {
+// function getDailyCheckSummary(details, dailyChecks) {
+function getDailyCheckSummary(details) {
   const dailyCheckCount = details.recent_checks.total_daily_check_summary;
   const totalDailyCheck = details.recent_checks.connected_devs;
   const pieValue = dailyCheckCount/totalDailyCheck;
-  const dailyCheckResults = calculateDailyCheckSummary(dailyChecks);
+  const dailyCheckResults = calculateDailyCheckSummary(details.daily_check_entries);
   
   return {
     "pieValue": pieValue,

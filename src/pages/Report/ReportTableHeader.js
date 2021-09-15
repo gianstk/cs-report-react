@@ -15,10 +15,11 @@ const tableMetadata = {
   },
   fitCheckTable: {
     title: "Fit Check Detail",
-    headers: ["Device", "Login", "Wearer ID", "Date", "Fit Check Result"],
+    headers: ["Device", "Serial Number", "Wearer ID", "Date", "Fit Check Result"],
     keys: {
       "Device": "dev_name", 
-      "Login": "email", 
+      // "Login": "email", 
+      "Serial Number": "dev_serial",
       "Wearer ID": "wearer_id", 
       "Date": "timestamp", 
       "Fit Check Result": "fit_check_result"
@@ -26,10 +27,11 @@ const tableMetadata = {
   },
   dailyCheckTable: {
     title: "Daily Check Result",
-    headers: ["Device", "Login", "Wearer ID", "Date", "Equipment Check", "Battery"],
+    headers: ["Device", "Serial Number", "Wearer ID", "Date", "Equipment Check", "Battery"],
     keys: {
       "Device": "dev_name", 
-      "Login": "email", 
+      // "Login": "email",
+      "Serial Number": "dev_serial", 
       "Wearer ID": "wearer_id", 
       "Date": "timestamp", 
       "Equipment Check": "equipment_result", 

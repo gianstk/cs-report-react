@@ -13,8 +13,11 @@ import DataExtractor from './ReportDataExtractor';
 
 const Report = () => {
   
-  const [reportData, setReportData] = useState({});
+  const [reportData, setReportData] = useState(null);
   const [devices, setDevices] = useState(null);
+  const [fitChecks, setFitChecks] = useState(null);
+  const [dailyChecks, setDailyChecks] = useState(null);
+
   const [recentChecks, setRecentChecks] = useState(null);
   const [summary1, setSummary1] = useState({});
   const [summary2, setSummary2] = useState({});
@@ -22,16 +25,20 @@ const Report = () => {
   
     
   useEffect(() => {
+    if (!reportData) {
+      return;
+    }
     if (reportData.details) {
-      console.log(reportData.details);
+      // table data initialisation
       setDevices(reportData.details.dev_entries);
+      setFitChecks(reportData.details.fit_check_entries);
+      setDailyChecks(reportData.details.daily_check_entries);
       setRecentChecks(reportData.details.dev_entries);
+      // PieForm data processing
       setSummary1(DataExtractor.getDeviceSummary(reportData.details));
       setSummary2(DataExtractor.getFitCheckSummary(reportData.details, staticReportData.data2));
       setSummary3(DataExtractor.getDailyCheckSummary(reportData.details, staticReportData.data3));
-      console.log("summary1:", summary1);
     }
-
   }, [reportData])
 
 
@@ -77,16 +84,15 @@ const Report = () => {
         {<Table key={"table1"} data={devices} tableMetadata={tableMetadata.deviceTable}/>}
 
         <div className="pagebreak"> </div>
-        {<Table key={"table2"} data={staticReportData.data2} tableMetadata={tableMetadata.fitCheckTable}/>}
+        {<Table key={"table2"} data={fitChecks} tableMetadata={tableMetadata.fitCheckTable}/>}
         
         <div className="pagebreak"> </div>
-        {<Table key={"table3"} data={staticReportData.data3} tableMetadata={tableMetadata.dailyCheckTable}/>}
+        {<Table key={"table3"} data={dailyChecks} tableMetadata={tableMetadata.dailyCheckTable}/>}
         
       </div>
         : <div></div>
       }
 
-      
       
     </div>
   );

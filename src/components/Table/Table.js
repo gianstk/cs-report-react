@@ -31,19 +31,10 @@ const Table = (props) => {
         {
           data.map((row, index) => {
             return <tr key={index}>
-              {headers.map((col, colIndex) => {return (<td key={colIndex}>{row[headerKeys[col]]}</td>);})}
+              {headers.map((col, colIndex) => {return (<td key={colIndex}>{String(row[headerKeys[col]])}</td>);})}
             </tr>
           })
         }
-        {/* {data.map((row, index) => (
-          <tr key={index}>
-            {
-              columns.map((col,colIndex) => {
-                return (<td key={colIndex}>{row[col]}</td>);
-              })    
-            }
-          </tr>
-        ))} */}
       </tbody>
     );
   }
@@ -56,7 +47,8 @@ const Table = (props) => {
         {renderTableHeader()}
         {renderTableBody()}
       </table>
-      
+    
+
     </div>    
   );
 }

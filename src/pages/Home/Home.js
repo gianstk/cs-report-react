@@ -9,6 +9,7 @@ const Home = () => {
   return (
     <>
       <p>Signin with key: {userContext.stateUser}</p>
+      <p>{localStorage.getItem("userKey")}</p>
     </>
   );
 }

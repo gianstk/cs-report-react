@@ -9,7 +9,8 @@ const ReportSearch = (props) => {
   const [month, setMonth] = useState("");
 
   const getReport = () => {
-    if (!org || !month) {
+    // if (!org || !month) {
+      if (!org) {
       alert("Please choose organisation and date");
       return;
     }
@@ -32,10 +33,10 @@ const ReportSearch = (props) => {
             </select>
           </div>
           
-          <div className="flex childGroup">
+          {/* <div className="flex childGroup">
             <p>Date</p>
             <input className="report-child" type="month" name="" id="" onChange={(e) => {setMonth(e.target.value)}} />
-          </div>
+          </div> */}
           
           
         </div>
