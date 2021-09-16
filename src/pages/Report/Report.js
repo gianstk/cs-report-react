@@ -18,7 +18,6 @@ const Report = () => {
   const [fitChecks, setFitChecks] = useState(null);
   const [dailyChecks, setDailyChecks] = useState(null);
 
-  const [recentChecks, setRecentChecks] = useState(null);
   const [summary1, setSummary1] = useState({});
   const [summary2, setSummary2] = useState({});
   const [summary3, setSummary3] = useState({});
@@ -29,15 +28,24 @@ const Report = () => {
       return;
     }
     if (reportData.details) {
+      // clone data
+      const recent_checks = JSON.parse(JSON.stringify(reportData.details.recent_checks));
+      const fit_check_entries = [...reportData.details.fit_check_entries];
+      const daily_check_entries = [...reportData.details.daily_check_entries];
+      const dev_entries = DataExtractor.sortByDateString([...reportData.details.dev_entries], "last_fit_check_str");
+      
+
       // table data initialisation
-      setDevices(reportData.details.dev_entries);
-      setFitChecks(reportData.details.fit_check_entries);
-      setDailyChecks(reportData.details.daily_check_entries);
-      setRecentChecks(reportData.details.dev_entries);
+      setDevices(dev_entries);
+      setFitChecks(DataExtractor.processFitCheckArray(fit_check_entries));      
+      setDailyChecks(DataExtractor.processDailyCheckArray(daily_check_entries));
+      
       // PieForm data processing
+      const scope_daily_check_entries = DataExtractor.processDailyCheckArray(reportData.details.scope_daily_check_entries);
+      const scope_fit_check_entries = DataExtractor.processFitCheckArray(reportData.details.scope_fit_check_entries);
       setSummary1(DataExtractor.getDeviceSummary(reportData.details));
-      setSummary2(DataExtractor.getFitCheckSummary(reportData.details, staticReportData.data2));
-      setSummary3(DataExtractor.getDailyCheckSummary(reportData.details, staticReportData.data3));
+      setSummary2(DataExtractor.getFitCheckSummary(scope_fit_check_entries, recent_checks));
+      setSummary3(DataExtractor.getDailyCheckSummary(scope_daily_check_entries, recent_checks));
     }
   }, [reportData])
 

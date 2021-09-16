@@ -1,17 +1,19 @@
-// process data for chart & card for 1st page of the report
+import React from 'react';
+import { FaCheck, FaTimes } from 'react-icons/fa';
 
+
+
+// process data for chart & card for 1st page of the report
 function calculateLocationList(devices) {
   var locationCount = {}
   for (var i = 0; i < devices.length; i++) {
-    let location = devices[i].dev_location == ""? "Unknown" : devices[i].dev_location;
-
+    let location = devices[i].dev_location === ""? "Unknown" : devices[i].dev_location;
     if (!locationCount[location]) {
       locationCount[location] = 1
       continue;
     } else {
       locationCount[location] = locationCount[location] + 1
-    }
-    
+    } 
   }
   var result = [];
   for (const key in locationCount) {
@@ -20,11 +22,13 @@ function calculateLocationList(devices) {
   return result;
 }
 
+
 function calculateFitResultSummary(fitChecks) {
   var fitCheckResults = {}
   var fitCheckTotal = 0
   for (var i = 0; i < fitChecks.length; i++) {
-    let result = calculateFitResult(fitChecks[i].fit_check_result);
+    // let result = calculateFitResult(fitChecks[i].fit_check_result);
+    let result = fitChecks[i].fit_check_result;
     fitCheckTotal += 1;
     if (!fitCheckResults[result]) {
       fitCheckResults[result] = 1
@@ -37,7 +41,6 @@ function calculateFitResultSummary(fitChecks) {
   for (const key in fitCheckResults) {
     result.push(`${key} : ${(fitCheckResults[key] / fitCheckTotal * 100).toFixed(2)}%`);
   }
-  console.log(fitCheckResults);
   return result;
 }
 
@@ -62,27 +65,21 @@ function calculateFitResult(fitScore) {
 }
 
 
-
 function calculateDailyCheckSummary(dailyChecks) {
-  // ["20% requires Equipment check", "0% requires Battery check", "After Daily Check"]
   var failedDailyChecks = {
     equipment: 0,
     battery: 0,
   };
-
   var dailyCheckTotal = 0;
   for (var i = 0; i < dailyChecks.length; i++) {
-    if (dailyChecks[i].equipment_result == false) {
+    if (dailyChecks[i].equipment_result === false) {
       failedDailyChecks.equipment += 1;  
     }
-    if (dailyChecks[i].battery_result == false) {
+    if (dailyChecks[i].battery_result === false) {
       failedDailyChecks.battery += 1;  
     }
-    
     dailyCheckTotal += 1;
   }
-
-
 
   return [
     `${(failedDailyChecks.equipment/dailyCheckTotal*100).toFixed(1)}% failed Equipment check`,
@@ -90,6 +87,23 @@ function calculateDailyCheckSummary(dailyChecks) {
     `After Daily Check`
   ];
 }
+
+
+function convertBooleanToCheckCrossIcon(status) {
+  if (status) {
+    return <FaCheck className="tableIcon"/>;
+  }
+  return <FaTimes className="tableIcon"/>;
+}
+
+function sortByDateString(arr, key) {
+  return arr.sort(function(a, b) {
+    var x = Date.parse(a[key]) ? Date.parse(a[key]) : 0;
+    var y = Date.parse(b[key]) ? Date.parse(b[key]) : 0;
+    return ((x < y) ? 1 : ((x>y) ? -1 : 0));
+  })
+}
+
 
 // ----------------------------------------------
 // Main exported functions
@@ -116,11 +130,11 @@ function getDeviceSummary(details) {
 }
 
 
-function getFitCheckSummary(details) {
-  const fitCheckCount = details.recent_checks.total_recent_fit_checks;
-  const totalConnectedDevice = details.recent_checks.connected_devs;
+function getFitCheckSummary(scope_fit_check_entries, recent_checks) {
+  const fitCheckCount = recent_checks.total_recent_fit_checks;
+  const totalConnectedDevice = recent_checks.connected_devs;
   const pieValue = fitCheckCount/totalConnectedDevice;
-  const fitCheckResults = calculateFitResultSummary(details.fit_check_entries);
+  const fitCheckResults = calculateFitResultSummary(scope_fit_check_entries);
   
   
   return {
@@ -139,11 +153,11 @@ function getFitCheckSummary(details) {
 
 
 // function getDailyCheckSummary(details, dailyChecks) {
-function getDailyCheckSummary(details) {
-  const dailyCheckCount = details.recent_checks.total_daily_check_summary;
-  const totalDailyCheck = details.recent_checks.connected_devs;
+function getDailyCheckSummary(scope_daily_check_entries, recent_checks) {
+  const dailyCheckCount = recent_checks.total_daily_check_summary;
+  const totalDailyCheck = recent_checks.connected_devs;
   const pieValue = dailyCheckCount/totalDailyCheck;
-  const dailyCheckResults = calculateDailyCheckSummary(details.daily_check_entries);
+  const dailyCheckResults = calculateDailyCheckSummary(scope_daily_check_entries);
   
   return {
     "pieValue": pieValue,
@@ -160,8 +174,29 @@ function getDailyCheckSummary(details) {
 }
 
 
+function processFitCheckArray(fitChecks) {
+  fitChecks = sortByDateString(fitChecks, "timestamp");
+
+  for (var i = 0; i < fitChecks.length; i++) {
+    fitChecks[i].fit_check_result = calculateFitResult(fitChecks[i].fit_check_result);
+  }
+  return fitChecks;
+}
+
+function processDailyCheckArray(dailyChecks) {
+  dailyChecks = sortByDateString(dailyChecks, "timestamp");
+  for (var i = 0; i < dailyChecks.length; i++) {
+    dailyChecks[i].equipment_result = convertBooleanToCheckCrossIcon(dailyChecks[i].equipment_result) 
+    dailyChecks[i].battery_result = convertBooleanToCheckCrossIcon(dailyChecks[i].battery_result) 
+  }
+  return dailyChecks;
+}
+
 export default {
   getDeviceSummary: getDeviceSummary,
   getFitCheckSummary: getFitCheckSummary,
-  getDailyCheckSummary: getDailyCheckSummary
+  getDailyCheckSummary: getDailyCheckSummary,
+  processFitCheckArray: processFitCheckArray,
+  processDailyCheckArray: processDailyCheckArray,
+  sortByDateString: sortByDateString,
 }

@@ -1,3 +1,5 @@
+import React from 'react';
+import { FaCheck, FaTimes } from 'react-icons/fa';
 const tableMetadata = {
   deviceTable: {
     title: "Active Halo Usage Summary in the last 30 days",
@@ -18,25 +20,37 @@ const tableMetadata = {
     headers: ["Device", "Serial Number", "Wearer ID", "Date", "Fit Check Result"],
     keys: {
       "Device": "dev_name", 
-      // "Login": "email", 
+      "Login": "email", 
       "Serial Number": "dev_serial",
       "Wearer ID": "wearer_id", 
       "Date": "timestamp", 
       "Fit Check Result": "fit_check_result"
-    }
+    },
+    specialNote: [
+      "**Fit Check Result with status of Bad indicates that there was an issue with the fit of the mask.**",
+      "**We recommend having the user check they have donned the mask correctly as per our tutorial in the app.**",
+    ],
   },
   dailyCheckTable: {
     title: "Daily Check Result",
     headers: ["Device", "Serial Number", "Wearer ID", "Date", "Equipment Check", "Battery"],
     keys: {
       "Device": "dev_name", 
-      // "Login": "email",
+      "Login": "email",
       "Serial Number": "dev_serial", 
       "Wearer ID": "wearer_id", 
       "Date": "timestamp", 
       "Equipment Check": "equipment_result", 
       "Battery": "battery_result"
-    }
+    },
+    icons: {
+      "Equipment Check": { true: <FaCheck/>, false: <FaTimes/> },
+      "Battery": { true: <FaCheck/>, false: <FaTimes/> }
+    },
+    specialNote: [
+      "**Equipment Check fail denotes an issue with the halo unit. We recommend checking that there is a filter installed and nothing obstructing it. Further information on filter can be found in the tutorials within the app.**",
+      "**Battery fail denotes an issue with the power status of the battery of the halo unit. We recommend checking that the device's battery is fully charged by keeping it docked in between use.**"
+    ],
   }
 }
 

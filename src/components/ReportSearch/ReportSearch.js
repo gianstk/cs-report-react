@@ -1,12 +1,11 @@
-import { useContext, useState } from 'react';
-import { FaRegHospital } from 'react-icons/fa';
+import { useState } from 'react';
 
 import './ReportSearch.css';
 
 const ReportSearch = (props) => {
 
   const [org, setOrg] = useState("");
-  const [month, setMonth] = useState("");
+  // const [month, setMonth] = useState("");
 
   const getReport = () => {
     // if (!org || !month) {

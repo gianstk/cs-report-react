@@ -36,3 +36,16 @@ table.Table {
 .Table tr:nth-child(even) {
   background-color: #eeeeee;
 }
+
+.specialNote {
+  color: #0a9995;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.specialNote p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}

@@ -1,4 +1,4 @@
-import { createPortal } from 'react-dom';
+import React from 'react';
 import './Table.css';
 
 const Table = (props) => {
@@ -7,6 +7,7 @@ const Table = (props) => {
   const title = props.tableMetadata.title;
   const headers = props.tableMetadata.headers;
   const headerKeys = props.tableMetadata.keys;
+  const specialNote = props.tableMetadata.specialNote;
 
   const renderTableTitle = () => {
     return (
@@ -25,13 +26,17 @@ const Table = (props) => {
   };
 
   const renderTableBody = () => {
-    
+    if (!data) {
+      return <div></div>
+    }
     return (
       <tbody>
         {
           data.map((row, index) => {
             return <tr key={index}>
-              {headers.map((col, colIndex) => {return (<td key={colIndex}>{String(row[headerKeys[col]])}</td>);})}
+              {headers.map((col, colIndex) => {
+                return (<td key={colIndex}>{row[headerKeys[col]]}</td>);
+              })}
             </tr>
           })
         }
@@ -39,16 +44,24 @@ const Table = (props) => {
     );
   }
 
+  const renderSpecialNote = () => {
+    
+    return (
+      <div className="specialNote">
+        {specialNote.map((note, index) => <p key={index}>{note}</p>)}
+      </div>
+    );
+  }
+
   return(
     <div className="tableForm">
-      
       {renderTableTitle()}
+      {specialNote ? renderSpecialNote() : null}
       <table className="Table center">
         {renderTableHeader()}
         {renderTableBody()}
       </table>
-    
-
+      
     </div>    
   );
 }
