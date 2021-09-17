@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import './ReportSearch.css';
 
+
 const ReportSearch = (props) => {
 
   const [org, setOrg] = useState("");
@@ -40,6 +41,9 @@ const ReportSearch = (props) => {
           
         </div>
         <button className="childGroup report-search-button primary-bg-color" onClick={getReport}>Search</button>
+        
+        
+
 
          
       </div>

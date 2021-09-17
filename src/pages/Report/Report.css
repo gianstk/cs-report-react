@@ -7,6 +7,18 @@
   color: #0a9995 !important;
 }
 
+.spinnerForm {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20% auto;
+  height: 120px;
+}
+
+.spinnerForm h1 {
+  color: #0a9995;
+}
+
 @media print {
   .pagebreak {
       clear: both;

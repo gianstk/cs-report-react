@@ -11,6 +11,10 @@ import staticReportData from './ReportData';
 import tableMetadata from './ReportTableHeader';
 import DataExtractor from './ReportDataExtractor';
 
+// 
+import { Spinner } from 'react-activity';
+import 'react-activity/dist/Spinner.css';
+
 const Report = () => {
   
   const [reportData, setReportData] = useState(null);
@@ -22,6 +26,7 @@ const Report = () => {
   const [summary2, setSummary2] = useState({});
   const [summary3, setSummary3] = useState({});
   
+  const [isSpinner, setSpinner] = useState(false);
     
   useEffect(() => {
     if (!reportData) {
@@ -51,6 +56,7 @@ const Report = () => {
 
   // GET request to fetch report
   const getReport = (orgId) => {
+    setSpinner(true);
     const userKey = localStorage.getItem("userKey");
     const REPORT_ENDPOINT = "https://beta.cleanspace.technology/api/v2/analytics/organisation_monthly_report?id=" + String(orgId);
     fetch(REPORT_ENDPOINT, {
@@ -59,6 +65,7 @@ const Report = () => {
         'Content-Type': 'application/json',
       }
     }).then((res) => {
+      setSpinner(false);
       if (!res.ok) {
         return;
       }
@@ -78,6 +85,16 @@ const Report = () => {
   return (
     <div className="Report">
       <ReportSearch getReport={getReport}/>
+      {
+        isSpinner 
+        ? <div className="spinnerForm flex">
+          <h1>Generating report...</h1>
+          <Spinner color="#0a9995" size={32} speed={1} animating={true}/> 
+        </div>
+        
+
+        : null
+      }
 
       {
         devices
