@@ -1,4 +1,24 @@
 .piechart {
   width: 180px;
+  height: 180px;
   text-align: center;
+  position: relative;
+}
+
+.doughnutIcon {
+  width: 162px;
+  height: 162px;
+  position: absolute;
+  left: 9px;
+  top: 14px;
+  padding: 30px;
+  color: #0a9995;
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.doughnut {
+  position: absolute;
+  z-index: 2;
 }

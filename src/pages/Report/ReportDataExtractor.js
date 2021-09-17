@@ -138,7 +138,8 @@ function getFitCheckSummary(scope_fit_check_entries, recent_checks) {
   
   
   return {
-    "pieValue": pieValue,
+    // "pieValue": pieValue,
+    "pieValue": 1,
     "card1": {
       "h1": [fitCheckCount],
       "h3": ["Fit Check conducted"],
@@ -160,7 +161,8 @@ function getDailyCheckSummary(scope_daily_check_entries, recent_checks) {
   const dailyCheckResults = calculateDailyCheckSummary(scope_daily_check_entries);
   
   return {
-    "pieValue": pieValue,
+    // "pieValue": pieValue,
+    "pieValue": 1,
     "card1": {
       "h1": [10],
       "h3": ["Number  of Daily Check"],

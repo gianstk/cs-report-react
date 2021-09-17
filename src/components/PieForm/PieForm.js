@@ -29,7 +29,7 @@ const PieForm = (props) => {
   return(
     <div className="PieForm">      
       <div className="flex">
-        <PieChart percentage={details["pieValue"]}/>
+        <PieChart percentage={details["pieValue"]} icon={props.icon}/>
 
         <div className="card" key="card1">
           {renderH1(details["card1"])}

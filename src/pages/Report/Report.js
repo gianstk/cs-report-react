@@ -33,7 +33,6 @@ const Report = () => {
       const fit_check_entries = [...reportData.details.fit_check_entries];
       const daily_check_entries = [...reportData.details.daily_check_entries];
       const dev_entries = DataExtractor.sortByDateString([...reportData.details.dev_entries], "last_fit_check_str");
-      
 
       // table data initialisation
       setDevices(dev_entries);
@@ -84,9 +83,9 @@ const Report = () => {
         devices
         ? <div>
         <h1 className="reportTitle">{staticReportData.title}</h1>
-        <PieForm details={summary1}/>
-        <PieForm details={summary2}/>
-        <PieForm details={summary3}/>
+        <PieForm details={summary1} icon={"device"}/>
+        <PieForm details={summary2} icon={"fitcheck"}/>
+        <PieForm details={summary3} icon={"dailycheck"}/>
         
         <div className="pagebreak"> </div>
         {<Table key={"table1"} data={devices} tableMetadata={tableMetadata.deviceTable}/>}
