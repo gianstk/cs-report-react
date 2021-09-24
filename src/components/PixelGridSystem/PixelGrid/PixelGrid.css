@@ -1,0 +1,13 @@
+.PixelGrid {
+  background-color: yellow;
+  opacity: 0.5;
+  width: 1100px;
+  height: 500px;
+  margin: auto;
+  position: absolute;
+  z-index: 2;
+}
+
+.PixelGrid .flex {
+  justify-content: center;
+}

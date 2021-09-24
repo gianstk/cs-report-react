@@ -6,6 +6,7 @@ import { UserContext } from '../../App';
 import Home from './../../pages/Home/Home';
 import Signin from './../../pages/Signin/Signin';
 import Report from './../../pages/Report/Report';
+import Localisation from '../../pages/Localisation/Localisation';
 
 
 const Routing = () => {
@@ -27,7 +28,11 @@ const Routing = () => {
       <Switch>
         {/* Signin page */}
         <Route path="/signin">
-          <Signin/>
+          <Signin />
+        </Route>
+
+        <Route path="/localisation">
+          <Localisation />
         </Route>
 
         {/* Report page */}
@@ -37,7 +42,7 @@ const Routing = () => {
 
         {/* Heom page */}
         <Route path="/">
-          <Home/>
+          <Home />
         </Route>
       </Switch>
     </div>

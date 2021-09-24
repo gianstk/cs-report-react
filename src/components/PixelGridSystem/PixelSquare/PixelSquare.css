@@ -1,0 +1,22 @@
+.PixelSquare {
+  width: 10px;
+  height: 10px;
+  background-color: #bbb;
+  /* margin: 0.5px; */
+  white-space: nowrap;
+  transition-duration: 200ms;
+}
+
+
+.PixelSquare:hover {
+  background-color: #999;
+  transition-duration: 200ms;
+}
+
+.PixelSquare.enable {
+  background-color: #555;
+}
+
+.PixelSquare.enable:hover {
+  background-color: #333;
+}
