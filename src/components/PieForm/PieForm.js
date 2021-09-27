@@ -6,6 +6,17 @@ import PieChart from './../PieChart/PieChart';
 
 const PieForm = (props) => {
   const details = props.details;
+  
+  const getStyleClass = (classObject, text) => {
+    const keys = Object.keys(classObject);
+    for (var i = 0; i < keys.length; i++) {
+      if (text.includes(keys[i])) {
+        console.log("FOUND:", keys[i])
+        return classObject[keys[i]];
+      }
+    }    
+    return "";
+  }
 
   const renderH1 = (cardDetail) => {
     if (cardDetail["h1"]) {
@@ -15,7 +26,7 @@ const PieForm = (props) => {
 
   const renderH3 = (cardDetail) => {
     if (cardDetail["h3"]) {
-      return( cardDetail["h3"].map( (p, index) => <h3 key={"h3"+index}>{p}</h3>) );
+      return( cardDetail["h3"].map( (p, index) => <h3 className={getStyleClass(cardDetail["h3class"], p)} key={"h3"+index}>{p}</h3>) );
     }
   }
 

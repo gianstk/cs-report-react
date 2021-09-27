@@ -5,7 +5,7 @@ const reportData = {
     "pieValue": 0.3,
     "card1": {
       "h1": [9],
-      "h3": ["Halo connected to CS Smart App"],
+      "h3": ["CleanSpace Halo connected to CS Smart App"],
       "p": ["(out of 20 registered Halo)", "In the last 30 days"],
     },
     "card2": {

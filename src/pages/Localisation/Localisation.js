@@ -6,8 +6,8 @@ import PixelGrid from '../../components/PixelGridSystem/PixelGrid/PixelGrid';
 
 
 const Localisation = () => {
-  const row = 50;
-  const col = 110;
+  const row = 50/2;
+  const col = 110/2;
   
   return (
     <div className="Localisation">

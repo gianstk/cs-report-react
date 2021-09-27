@@ -7,6 +7,11 @@
   color: #0a9995 !important;
 }
 
+.orgName {
+  font-size: 2rem;
+  color: #0a9995 !important;
+}
+
 .spinnerForm {
   flex-direction: column;
   align-items: center;

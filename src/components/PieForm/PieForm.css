@@ -15,3 +15,11 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
+.orange-text {
+  color: #e90;
+}
+
+.red-text {
+  color: red;
+}

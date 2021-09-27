@@ -5,9 +5,6 @@ import './PixelSquare.css';
 
 const PixelSquare = ({ enable, updateGrid, i, j, onSquareMouseDown, onSquareMouseMove, onSquareMouseUp }) => {
   const enableCSS = enable ? "enable" : "";
-  // const toggleStatus = () => {
-  //   updateGrid(i, j);
-  // }
   
   const onMouseDown = (e) => {
     onSquareMouseDown(i, j, enable);
@@ -33,7 +30,7 @@ const PixelSquare = ({ enable, updateGrid, i, j, onSquareMouseDown, onSquareMous
       className={`PixelSquare ${enableCSS}`}
       
       onMouseDown={(e) => {onMouseDown(e)}}
-      onMouseMove={(e) => {onMouseMove(e)}}
+      onMouseOver={(e) => {onMouseMove(e)}}
       onMouseUp={(e) => {onMouseUp(e)}}
     />
   );

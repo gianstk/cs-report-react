@@ -66,6 +66,8 @@ function calculateFitResult(fitScore) {
 
 
 function calculateDailyCheckSummary(dailyChecks) {
+  console.log("daily check:", dailyChecks);
+
   var failedDailyChecks = {
     equipment: 0,
     battery: 0,
@@ -101,7 +103,22 @@ function sortByDateString(arr, key) {
     var x = Date.parse(a[key]) ? Date.parse(a[key]) : 0;
     var y = Date.parse(b[key]) ? Date.parse(b[key]) : 0;
     return ((x < y) ? 1 : ((x>y) ? -1 : 0));
-  })
+  });
+}
+
+function sortByFitCheckResult(arr) {
+  return arr.sort(function(a, b) {
+    var x = a["fit_check_result"];
+    var y = b["fit_check_result"];
+    // return ((x > y) ? 1 : ((x<y) ? -1 : 0));
+    if (x > y) {
+      return 1;
+    } else if (x < y) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 }
 
 
@@ -119,11 +136,13 @@ function getDeviceSummary(details) {
     "pieValue": pieValue,
     "card1": {
       "h1": [connectedDevice],
-      "h3": ["Halo connected to CS Smart App"],
+      "h3": ["CleanSpace Halo connected to CS Smart App"],
+      "h3class": {},
       "p": [`(out of ${totalDevices} registered Halo)`, "In the last 30 days"],
     },
     "card2": {
-      "h3": ["Location of the connected Halo"],
+      "h3": connectedDevice === 0 ? ["There is not Connected Device detail"]: ["Location of the connected Halo"],
+      "h3class": {},
       "p": locationList,
     }
   }
@@ -135,19 +154,23 @@ function getFitCheckSummary(scope_fit_check_entries, recent_checks) {
   const totalConnectedDevice = recent_checks.connected_devs;
   const pieValue = fitCheckCount/totalConnectedDevice;
   const fitCheckResults = calculateFitResultSummary(scope_fit_check_entries);
-  
-  
+
   return {
     // "pieValue": pieValue,
     "pieValue": 1,
     "card1": {
       "h1": [fitCheckCount],
       "h3": ["Fit Check conducted"],
-      "p": ["In the last 30 days"],
+      "h3class": {},
+      "p": ["In the last 28 days"],
     },
     "card2": {
-      "h3": fitCheckResults,
-      "p": ["in the last 30 days"],
+      "h3": fitCheckCount === 0 ? ["There is no Fit Check detail"] : fitCheckResults,
+      "h3class": {
+        "Try Again": "orange-text",
+        "Poor Fit": "red-text",
+      },
+      "p": ["in the last 28 days"],
     }
   }
 }
@@ -159,25 +182,35 @@ function getDailyCheckSummary(scope_daily_check_entries, recent_checks) {
   const totalDailyCheck = recent_checks.connected_devs;
   const pieValue = dailyCheckCount/totalDailyCheck;
   const dailyCheckResults = calculateDailyCheckSummary(scope_daily_check_entries);
-  
+
   return {
     // "pieValue": pieValue,
     "pieValue": 1,
     "card1": {
-      "h1": [10],
+      "h1": [dailyCheckCount],
       "h3": ["Number  of Daily Check"],
-      "p": ["In the last 30 days"],
+      "h3class": {},
+      "p": ["In the last 28 days"],
     },
     "card2": {
-      "h3": dailyCheckResults,
-      "p": ["In the last 30 days"],
+      "h3": dailyCheckCount === 0 ? ["There is no Daily Check detail"] : dailyCheckResults,
+      "h3class": {},
+      "p": ["In the last 28 days"],
     }
   }
 }
 
 
+
+
+function processDevicesArray(devices) {
+  var filteredDevices = devices.filter(device => !(device.last_fit_check_str === "" && device.last_daily_check_str === ""));
+  return filteredDevices;
+}
+
 function processFitCheckArray(fitChecks) {
-  fitChecks = sortByDateString(fitChecks, "timestamp");
+  // fitChecks = sortByDateString(fitChecks, "timestamp");
+  fitChecks = sortByFitCheckResult(fitChecks);
 
   for (var i = 0; i < fitChecks.length; i++) {
     fitChecks[i].fit_check_result = calculateFitResult(fitChecks[i].fit_check_result);
@@ -198,6 +231,7 @@ export default {
   getDeviceSummary: getDeviceSummary,
   getFitCheckSummary: getFitCheckSummary,
   getDailyCheckSummary: getDailyCheckSummary,
+  processDevicesArray: processDevicesArray,
   processFitCheckArray: processFitCheckArray,
   processDailyCheckArray: processDailyCheckArray,
   sortByDateString: sortByDateString,

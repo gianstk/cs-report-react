@@ -12,8 +12,8 @@ const PixelGrid = ({ x, y }) => {
   // mouse dragging
   const [dragging, setDragging] = useState(false);
   const [isWriting, setIsWriting] = useState(false);
+  const [selections, setSelections] = useState([]);
 
-  
   
   // initialise empty grid with (x, y) dimension
   const initGrid = () => {
@@ -66,38 +66,35 @@ const PixelGrid = ({ x, y }) => {
     setGrid(cloneGrid);
   }
 
-  const onMouseDown = (e) => {
-    console.log("on mouse down");
-    setDragging(true);
-    e.stopPropagation();
-    e.preventDefault();
-  }
+  // const onMouseDown = (e) => {
+  //   console.log("on mouse down");
+  //   setDragging(true);
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // }
 
-  const onMouseMove = (e) => {
-    if (!dragging) return;
-    console.log("is dragging");
-    e.stopPropagation();
-    e.preventDefault();
-  }
+  // const onMouseMove = (e) => {
+  //   if (!dragging) return;
+  //   console.log("is dragging");
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // }
 
-  const onMouseUp = (e) => {
-    console.log("on mouse up");
-    setDragging(false);
-    e.stopPropagation();
-    e.preventDefault();
-  }
-
-
+  // const onMouseUp = (e) => {
+  //   console.log("on mouse up");
+  //   setDragging(false);
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // }
 
   const onSquareMouseDown = (i, j, squareStatus) => {
-    setDragging(true);
+    setDragging(true);    
     setIsWriting(!squareStatus);
     toggleGrid(i, j)
   }
 
   const onSquareMouseMove = (i, j) => {
     if (!dragging) return;
-    console.log(`mouse is moving through square (${i},${j})`);
     updateGrid(i, j, isWriting);
   }
 
@@ -106,10 +103,13 @@ const PixelGrid = ({ x, y }) => {
     setIsWriting(false);
   }
 
+  const calculateHighlight = (g) => {
 
+  }
 
   useEffect(() => {
     setGrid(initGrid());
+
   }, []);
 
   return(
@@ -119,6 +119,7 @@ const PixelGrid = ({ x, y }) => {
       // onMouseUp={(e) => {onMouseUp(e)}}
     >
       {renderGrid()}
+      <button>Change Mode</button>
     </div>
   );
 }

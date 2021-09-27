@@ -2,7 +2,7 @@ import React from 'react';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 const tableMetadata = {
   deviceTable: {
-    title: "Active Halo Usage Summary in the last 30 days",
+    title: "Active Halo Usage Summary in the last 28 days",
     headers: ["Asset ID", "Serial Number", "Location", "Days in Use (past 28 days)", "Fit Check Count (past 28 days)", "Last Fit Check Date", "Last Daily Check Date", "Days since Last recorded filter change"],
     keys: {
       "Asset ID": "dev_name",
@@ -27,7 +27,7 @@ const tableMetadata = {
       "Fit Check Result": "fit_check_result"
     },
     specialNote: [
-      "**Fit Check Result with status of Bad indicates that there was an issue with the fit of the mask.**",
+      "**Fit Check Result with status of Poor indicates that there was an issue with the fit of the mask.**",
       "**We recommend having the user check they have donned the mask correctly as per our tutorial in the app.**",
     ],
   },

@@ -49,3 +49,10 @@ table.Table {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
+
+@media print {
+  table.Table {
+    border-radius: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0);
+  }
+}

@@ -18,6 +18,7 @@ import 'react-activity/dist/Spinner.css';
 const Report = () => {
   
   const [reportData, setReportData] = useState(null);
+  const [orgName, setOrgName] = useState("");
   const [devices, setDevices] = useState(null);
   const [fitChecks, setFitChecks] = useState(null);
   const [dailyChecks, setDailyChecks] = useState(null);
@@ -27,6 +28,7 @@ const Report = () => {
   const [summary3, setSummary3] = useState({});
   
   const [isSpinner, setSpinner] = useState(false);
+  
     
   useEffect(() => {
     if (!reportData) {
@@ -40,7 +42,8 @@ const Report = () => {
       const dev_entries = DataExtractor.sortByDateString([...reportData.details.dev_entries], "last_fit_check_str");
 
       // table data initialisation
-      setDevices(dev_entries);
+      setOrgName(reportData.organisation.name);
+      setDevices(DataExtractor.processDevicesArray(dev_entries));
       setFitChecks(DataExtractor.processFitCheckArray(fit_check_entries));      
       setDailyChecks(DataExtractor.processDailyCheckArray(daily_check_entries));
       
@@ -100,6 +103,7 @@ const Report = () => {
         devices
         ? <div>
         <h1 className="reportTitle">{staticReportData.title}</h1>
+        <h2 className="orgName">{orgName}</h2>
         <PieForm details={summary1} icon={"device"}/>
         <PieForm details={summary2} icon={"fitcheck"}/>
         <PieForm details={summary3} icon={"dailycheck"}/>
