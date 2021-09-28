@@ -56,9 +56,20 @@ const Report = () => {
     }
   }, [reportData])
 
+  const clearState = () => {
+    setReportData(null);
+    setOrgName("");
+    setDevices(null);
+    setFitChecks(null);
+    setDailyChecks(null);
+    setSummary1({});
+    setSummary2({});
+    setSummary3({});
+  }
 
   // GET request to fetch report
   const getReport = (orgId) => {
+    clearState();
     setSpinner(true);
     const userKey = localStorage.getItem("userKey");
     const REPORT_ENDPOINT = "https://beta.cleanspace.technology/api/v2/analytics/organisation_monthly_report?id=" + String(orgId);

@@ -1,7 +1,8 @@
 import React from 'react';
 
 import './PieForm.css';
-import PieChart from './../PieChart/PieChart';
+// import PieChart from './../PieChart/PieChart';
+import CircleIcon from '../CircleIcon/CircleIcon';
 
 
 const PieForm = (props) => {
@@ -40,7 +41,8 @@ const PieForm = (props) => {
   return(
     <div className="PieForm">      
       <div className="flex">
-        <PieChart percentage={details["pieValue"]} icon={props.icon}/>
+        {/* <PieChart percentage={details["pieValue"]} icon={props.icon}/> */}
+        <CircleIcon icon={props.icon}/>
 
         <div className="card" key="card1">
           {renderH1(details["card1"])}

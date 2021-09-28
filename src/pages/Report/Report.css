@@ -3,8 +3,10 @@
 }
 
 .reportTitle {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #0a9995 !important;
+  font-family: "Handel Gothic";
+  margin-bottom: 1rem;
 }
 
 .orgName {

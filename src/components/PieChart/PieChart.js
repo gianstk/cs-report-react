@@ -50,10 +50,10 @@ const PieChart = (props) => {
     <div className="piechart">
       {renderIcon()}
       {/* <img className="doughnutIcon" src="fitCheckIcon.jpg" alt="" /> */}
-      {/* <Doughnut className="doughnut"
+      <Doughnut className="doughnut"
         data={configData(props.percentage)}
         options={{cutout: 55}}
-      /> */}
+      />
       
     </div>
   );
