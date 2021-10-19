@@ -6,6 +6,7 @@ import { UserContext } from '../../App';
 import Home from './../../pages/Home/Home';
 import Signin from './../../pages/Signin/Signin';
 import Report from './../../pages/Report/Report';
+import DebugLog from './../../pages/DebugLog/DebugLog';
 import Localisation from '../../pages/Localisation/Localisation';
 
 
@@ -38,6 +39,11 @@ const Routing = () => {
         {/* Report page */}
         <Route path="/report">
           <Report/>
+        </Route>
+
+        {/* Monitoring Logs page */}
+        <Route path="/monitorLog">
+          <DebugLog/>
         </Route>
 
         {/* Heom page */}

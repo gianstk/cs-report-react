@@ -14,7 +14,6 @@ import DataExtractor from './ReportDataExtractor';
 // 
 import { Spinner } from 'react-activity';
 import 'react-activity/dist/Spinner.css';
-
 const Report = () => {
   
   const [reportData, setReportData] = useState(null);
@@ -56,6 +55,7 @@ const Report = () => {
     }
   }, [reportData])
 
+  // reset all states to the default value
   const clearState = () => {
     setReportData(null);
     setOrgName("");
@@ -105,8 +105,6 @@ const Report = () => {
           <h1>Generating report...</h1>
           <Spinner color="#0a9995" size={32} speed={1} animating={true}/> 
         </div>
-        
-
         : null
       }
 

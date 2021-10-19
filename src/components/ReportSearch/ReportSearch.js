@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import './ReportSearch.css';
-import Organisation from './organisations';
 import Organisations from './organisations';
 
 
