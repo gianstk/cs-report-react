@@ -10,7 +10,7 @@ import tableMetadata from './DebugLogTableHeader';
 import { Spinner } from 'react-activity';
 import 'react-activity/dist/Spinner.css';
 
-const BASE_URL = "https://islands-hawk-beta-tea.trycloudflare.com/";
+const BASE_URL = "https://delhi-mentor-lite-wesley.trycloudflare.com/";
 
 
 const DebugLog = () => {

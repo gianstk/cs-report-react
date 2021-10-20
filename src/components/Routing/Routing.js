@@ -42,7 +42,7 @@ const Routing = () => {
         </Route>
 
         {/* Monitoring Logs page */}
-        <Route path="/monitorLog">
+        <Route path="/debugLog">
           <DebugLog/>
         </Route>
 

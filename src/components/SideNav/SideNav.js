@@ -14,7 +14,7 @@ const SideNav = () => {
       <a href="/"><div className="flex"><AiOutlineHome className="navIcon"/> Home</div></a>
       <a href="#"><div className="flex"><RiDashboardLine className="navIcon"/> Dashboard</div></a>
       <a href="/localisation"><div className="flex"><IoLanguageSharp className="navIcon"/> Localisation</div></a>
-      <a href="/monitorLog"><div className="flex"><FaTable className="navIcon"/> Monitoring Logs</div></a>
+      <a href="/debugLog"><div className="flex"><FaTable className="navIcon"/> Debug Logs</div></a>
       <a href="/report"><div className="flex"><HiOutlineDocumentReport className="navIcon"/> Report</div></a>
       <a href="#"></a>
       
